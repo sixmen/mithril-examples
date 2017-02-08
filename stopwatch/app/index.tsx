@@ -12,13 +12,13 @@ function formatTime(time: number): string {
 }
 
 interface StopwatchState {
-  elapsed: number
-  startTime: number
-  timer?: number
-  start: (this: StopwatchState) => void
-  stop: (this: StopwatchState) => void
-  isPaused: (this: StopwatchState) => boolean
-  getElapsed: (this: StopwatchState) => number
+  elapsed: number;
+  startTime: number;
+  timer?: number;
+  start: (this: StopwatchState) => void;
+  stop: (this: StopwatchState) => void;
+  isPaused: (this: StopwatchState) => boolean;
+  getElapsed: (this: StopwatchState) => number;
 }
 
 const Stopwatch: Mithril.Component<{}, StopwatchState> & StopwatchState = {
@@ -64,6 +64,6 @@ const Stopwatch: Mithril.Component<{}, StopwatchState> & StopwatchState = {
       }
     </div>;
   }
-}
+};
 
 m.mount(document.getElementById('app') !, Stopwatch);
