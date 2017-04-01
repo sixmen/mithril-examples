@@ -2,11 +2,11 @@
   "name": "Stopwatch",
   "private": true,
   "dependencies": {
-    "mithril": "^1.0.0",
+    "mithril": "^1.1.0",
     "numeral": "^2.0.6"
   },
   "devDependencies": {
-    "@types/mithril": "github:spacejack/mithril.d.ts#1.0.0",
+    "@types/mithril": "github:spacejack/mithril.d.ts#1.1.0",
     "@types/numeral": "0.0.20",
     "awesome-typescript-loader": "^3.1.2",
     "clean-webpack-plugin": "^0.1.16",

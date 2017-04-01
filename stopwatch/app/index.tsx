@@ -21,7 +21,7 @@ interface StopwatchState {
   getElapsed: (this: StopwatchState) => number;
 }
 
-const Stopwatch: Mithril.Component<{}, StopwatchState> & StopwatchState = {
+const Stopwatch: m.Component<{}, StopwatchState> & StopwatchState = {
   elapsed: 0,
   startTime: 0,
   timer: undefined,
@@ -66,4 +66,4 @@ const Stopwatch: Mithril.Component<{}, StopwatchState> & StopwatchState = {
   }
 };
 
-m.mount(document.getElementById('app') !, Stopwatch);
+m.mount(document.getElementById('app')!, Stopwatch);
