@@ -11,49 +11,46 @@ function formatTime(time: number): string {
   return part_s + part_ms;
 }
 
-interface StopwatchState {
-  elapsed: number;
-  startTime: number;
-  timer?: number;
-  start: (this: StopwatchState) => void;
-  stop: (this: StopwatchState) => void;
-  isPaused: (this: StopwatchState) => boolean;
-  getElapsed: (this: StopwatchState) => number;
-}
+class Stopwatch implements m.ClassComponent<{}> {
+  elapsed = 0;
+  startTime = 0;
+  timer?: number = undefined;
 
-const Stopwatch: m.Component<{}, StopwatchState> & StopwatchState = {
-  elapsed: 0,
-  startTime: 0,
-  timer: undefined,
   start() {
     this.stop();
     this.startTime = Date.now();
     this.timer = setInterval(() => {
       m.redraw();
     }, 33);
-  },
+  }
+
   stop() {
     if (this.timer) {
       this.elapsed += Date.now() - this.startTime;
       clearInterval(this.timer);
     }
     this.timer = undefined;
-  },
+  }
+
   isPaused(): boolean {
     return this.timer === undefined;
-  },
+  }
+
   getElapsed(): number {
     let elapsed = this.elapsed;
     if (!this.isPaused()) {
       elapsed += Date.now() - this.startTime;
     }
     return elapsed;
-  },
+  }
+
   oninit() {
-  },
+  }
+
   onremove() {
     this.stop();
-  },
+  }
+
   view() {
     return <div class={styles.root}>
       <div class={styles.time}>{formatTime(this.getElapsed())}</div>
