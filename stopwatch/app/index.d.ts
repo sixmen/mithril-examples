@@ -1,1 +1,4 @@
-declare var require: any;
+declare module '*.css' {
+  const styles: { [key: string]: string };
+  export = styles;
+}

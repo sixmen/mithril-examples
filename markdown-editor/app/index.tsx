@@ -1,10 +1,10 @@
-/// <reference path="index.d.ts" />
+/// <reference path='index.d.ts'/>
 
 import * as m from 'mithril';
 import * as Stream from 'mithril/stream';
 import * as marked from 'marked';
 
-const styles = require('./index.css');
+import styles = require('./index.css');
 
 class MarkdownEditor implements m.ClassComponent<{}> {
   source = Stream('# Markdown Editor\n\nThis is a simple *Markdown* editor using **Mithril**.');
@@ -20,6 +20,6 @@ class MarkdownEditor implements m.ClassComponent<{}> {
       <div class={styles.compiled}>{m.trust(this.compiled())}</div>
     </div>;
   }
-};
+}
 
 m.mount(document.getElementById('app')!, MarkdownEditor);

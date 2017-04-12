@@ -1,9 +1,9 @@
-/// <reference path="index.d.ts" />
+/// <reference path='index.d.ts'/>
 
 import * as m from 'mithril';
 import * as numeral from 'numeral';
 
-const styles = require('./index.css');
+import styles = require('./index.css');
 
 function formatTime(time: number): string {
   const part_s = numeral(Math.floor(time / 1000)).format('00:00:00');
@@ -61,6 +61,6 @@ class Stopwatch implements m.ClassComponent<{}> {
       }
     </div>;
   }
-};
+}
 
 m.mount(document.getElementById('app')!, Stopwatch);

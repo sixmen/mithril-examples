@@ -38,10 +38,6 @@ module.exports = function (env) {
       path: path.resolve(__dirname, output_dir),
       filename: is_production ? '[name].[chunkhash].js' : '[name].js'
     },
-    devServer: {
-      inline: true,
-      contentBase: path.resolve(__dirname, output_dir)
-    },
     module: {
       rules: [
         {
@@ -51,8 +47,7 @@ module.exports = function (env) {
         },
         {
           test: /\.css$/,
-          loader: ExtractTextPlugin.extract('css-loader'),
-          exclude: /node_modules/
+          loader: ExtractTextPlugin.extract('css-loader')
         }
       ]
     },

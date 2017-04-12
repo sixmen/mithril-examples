@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "jsxFactory": "m"
+    "jsxFactory": "m",
+    "noImplicitThis": true,
+    "strictNullChecks": true
   }
 }
