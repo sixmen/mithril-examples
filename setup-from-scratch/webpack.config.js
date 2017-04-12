@@ -26,6 +26,10 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx']
   },
+  node: {
+    global: false,
+    setImmediate: false
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html'

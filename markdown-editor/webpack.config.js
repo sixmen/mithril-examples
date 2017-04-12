@@ -54,6 +54,10 @@ module.exports = function (env) {
     resolve: {
       extensions: ['.js', '.ts', '.tsx']
     },
+    node: {
+      global: false,
+      setImmediate: false
+    },
     plugins: plugins
   };
 };
