@@ -4,9 +4,11 @@
     "tslint:recommended"
   ],
   "jsRules": {
+    "max-classes-per-file": [true, 2],
     "no-reference": false
   },
   "rules": {
+    "max-classes-per-file": [true, 2],
     "no-reference": false
   },
   "rulesDirectory": []

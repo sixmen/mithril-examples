@@ -6,14 +6,16 @@ import * as Stream from "mithril/stream";
 
 import styles = require("./index.css");
 
-class MarkdownEditor implements m.ClassComponent<{}> {
-  private source = Stream("# Markdown Editor\n\nThis is a simple *Markdown* editor using **Mithril**.");
-  private compiled: Stream.Stream<string>;
+class MarkdownEditorViewModel {
+  protected source = Stream("# Markdown Editor\n\nThis is a simple *Markdown* editor using **Mithril**.");
+  protected compiled: Stream.Stream<string>;
 
-  public oninit() {
+  constructor() {
     this.compiled = this.source.map((source) => marked(source));
   }
+}
 
+class MarkdownEditorView extends MarkdownEditorViewModel implements m.ClassComponent<{}> {
   public view() {
     return <div class={styles.root}>
       <textarea class={styles.source} value={this.source()} oninput={m.withAttr("value", this.source)} />
@@ -22,4 +24,4 @@ class MarkdownEditor implements m.ClassComponent<{}> {
   }
 }
 
-m.mount(document.getElementById("app")!, MarkdownEditor);
+m.mount(document.getElementById("app")!, MarkdownEditorView);
