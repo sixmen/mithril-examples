@@ -16,7 +16,7 @@ class StopwatchViewModel {
   private startTime = 0;
   private timer?: number = undefined;
 
-  protected start = () => {
+  public start = () => {
     this.stop();
     this.startTime = Date.now();
     this.timer = setInterval(() => {
@@ -24,7 +24,7 @@ class StopwatchViewModel {
     }, 33);
   }
 
-  protected stop = () => {
+  public stop = () => {
     if (this.timer) {
       this.elapsed += Date.now() - this.startTime;
       clearInterval(this.timer);
@@ -32,11 +32,11 @@ class StopwatchViewModel {
     this.timer = undefined;
   }
 
-  protected isPaused = (): boolean => {
+  public isPaused = (): boolean => {
     return this.timer === undefined;
   }
 
-  protected getElapsed = (): number => {
+  public getElapsed = (): number => {
     let elapsed = this.elapsed;
     if (!this.isPaused()) {
       elapsed += Date.now() - this.startTime;
@@ -45,18 +45,24 @@ class StopwatchViewModel {
   }
 }
 
-class StopwatchView extends StopwatchViewModel implements m.ClassComponent<{}> {
+class StopwatchView implements m.ClassComponent<{}> {
+  private vm: StopwatchViewModel;
+
+  constructor() {
+    this.vm = new StopwatchViewModel();
+  }
+
   public onremove() {
-    this.stop();
+    this.vm.stop();
   }
 
   public view() {
     return <div class={styles.root}>
-      <div class={styles.time}>{formatTime(this.getElapsed())}</div>
-      {this.isPaused() ?
-        <button class={styles.start} onclick={this.start}>Start</button>
+      <div class={styles.time}>{formatTime(this.vm.getElapsed())}</div>
+      {this.vm.isPaused() ?
+        <button class={styles.start} onclick={this.vm.start}>Start</button>
         :
-        <button class={styles.stop} onclick={this.stop}>Stop</button>
+        <button class={styles.stop} onclick={this.vm.stop}>Stop</button>
       }
     </div>;
   }
