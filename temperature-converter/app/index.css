@@ -12,6 +12,11 @@ html, body {
   margin-top: 20px;
 }
 
+:local .title {
+  width: 430px;
+  text-align: center;
+}
+
 :local .block {
   display: inline-block;
   width: 200px;
@@ -23,5 +28,7 @@ html, body {
 }
 
 :local .equal {
+  width: 30px;
   display: inline-block;
+  text-align: center;
 }
