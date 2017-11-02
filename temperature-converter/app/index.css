@@ -1,0 +1,27 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#app {
+  height: 100%;
+}
+
+:local .root {
+  margin-top: 20px;
+}
+
+:local .block {
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+}
+
+:local .input {
+  text-align: center;
+}
+
+:local .equal {
+  display: inline-block;
+}
