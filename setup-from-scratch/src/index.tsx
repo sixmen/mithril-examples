@@ -1,3 +1,4 @@
+// tslint:disable-next-line:no-reference
 /// <reference path="index.d.ts"/>
 
 import * as m from "mithril";
@@ -10,4 +11,4 @@ class App implements m.ClassComponent<{}> {
   }
 }
 
-m.mount(document.getElementById("app")!, App);
+m.mount(document.getElementById("app"), App);

@@ -1,15 +1,8 @@
-const path = require('path');
-
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  context: path.resolve(__dirname, 'app'),
-  entry: './index',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js'
-  },
+  mode: 'development',
   module: {
     rules: [
       {
@@ -26,13 +19,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx']
   },
-  node: {
-    global: false,
-    setImmediate: false
-  },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: 'src/index.html'
     }),
     new ExtractTextPlugin({
       filename: '[name].css'

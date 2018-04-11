@@ -3,11 +3,5 @@
   "extends": [
     "tslint:recommended"
   ],
-  "jsRules": {
-    "no-reference": false
-  },
-  "rules": {
-    "no-reference": false
-  },
   "rulesDirectory": []
 }
