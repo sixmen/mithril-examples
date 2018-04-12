@@ -1,6 +1,5 @@
 const path = require('path');
 
-const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,15 +9,11 @@ module.exports = function (env) {
   const output_dir = path.resolve(__dirname, '../docs/temperature-converter');
 
   const plugins = [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['vendor', 'manifest'],
-      minChunks: Infinity
-    }),
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: 'src/index.html'
     }),
     new ExtractTextPlugin({
-      filename: env === 'production' ? '[name].[chunkhash].css' : '[name].css'
+      filename: is_production ? '[name].[chunkhash].css' : '[name].css'
     })
   ]
 
@@ -29,10 +24,9 @@ module.exports = function (env) {
   }
 
   return {
-    context: path.resolve(__dirname, 'app'),
+    mode: is_production ? 'production' : 'development',
     entry: {
-      vendor: ['mithril'],
-      index: './index'
+      index: './src/index'
     },
     output: {
       path: path.resolve(__dirname, output_dir),
@@ -47,16 +41,29 @@ module.exports = function (env) {
         },
         {
           test: /\.css$/,
-          loader: ExtractTextPlugin.extract('css-loader')
+          loader: ExtractTextPlugin.extract({
+            loader: 'css-loader',
+            options: {
+              minimize: is_production,
+              localIdentName: is_production ? '[hash:base64]' : '[path][name]__[local]--[hash:base64:5]'
+            }
+          })
         }
       ]
     },
     resolve: {
       extensions: ['.js', '.ts', '.tsx']
     },
-    node: {
-      global: false,
-      setImmediate: false
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendor',
+            chunks: 'all',
+          }
+        }
+      }
     },
     plugins: plugins
   };
