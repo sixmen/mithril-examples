@@ -1,0 +1,48 @@
+:local .form_group {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+:local .invalid .label {
+  color: #e71123;
+}
+
+:local .label {
+  width: 80px;
+  display: inline-block;
+}
+
+:local .form_control {
+  width: 200px;
+}
+
+:local .form_text {
+  display: block;
+  margin-top: 5px;
+  margin-left: 30px;
+}
+
+:local .invalid .form_text {
+  color: #999999;
+}
+
+:local .button {
+  margin-top: 5px;
+  margin-left: 40px;
+  width: 100px;
+  height: 30px;
+  color: #fff;
+  border: 1px solid transparent;
+  background-color: #0643eb;
+  border-color: #0643eb;
+  border-radius: .25rem;
+}
+
+:local .button:hover {
+  background-color: #064ee7;
+  border-color: #037bfc;
+}
+
+:local .button.disabled {
+  opacity: 0.65;
+}
